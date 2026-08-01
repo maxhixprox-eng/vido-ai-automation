@@ -219,6 +219,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (editReviewModal) editReviewModal.classList.remove('open');
   });
 
+  // Firebase Initialization & Cloud Sync Setup
+  let firebaseApp = null;
+  let firebaseDb = null;
+
+  async function initFirebaseCloud() {
+    try {
+      const res = await fetch('/api/firebase-config');
+      const cfg = await res.json();
+      if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+        firebaseApp = firebase.initializeApp(cfg);
+        if (cfg.databaseURL) {
+          firebaseDb = firebase.database();
+          console.log('🔥 Firebase Cloud Database Initialized:', cfg.databaseURL);
+        }
+      }
+    } catch (err) {
+      console.warn('Firebase SDK initialization notice:', err);
+    }
+  }
+  initFirebaseCloud();
+
   // Modal Dialog Handlers
   btnApiKeys?.addEventListener('click', async () => {
     apiKeyModal.classList.add('open');
@@ -233,6 +254,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (data.elevenlabs_key && document.getElementById('input-elevenlabs-key')) {
         document.getElementById('input-elevenlabs-key').value = data.elevenlabs_key;
+      }
+      if (data.firebase_db_url && document.getElementById('input-firebase-url')) {
+        document.getElementById('input-firebase-url').value = data.firebase_db_url;
       }
     } catch (e) {
       console.error('Error fetching keys:', e);
@@ -250,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const tiktokKey = document.getElementById('input-tiktok-key') ? document.getElementById('input-tiktok-key').value : '';
     const twitterKey = document.getElementById('input-twitter-key').value;
     const metaToken = document.getElementById('input-meta-token').value;
+    const firebaseUrl = document.getElementById('input-firebase-url')?.value || '';
     const sandboxMode = document.getElementById('chk-sandbox-mode').checked;
 
     try {
@@ -263,11 +288,12 @@ document.addEventListener('DOMContentLoaded', () => {
           tiktok_token: tiktokKey,
           twitter_key: twitterKey,
           meta_token: metaToken,
+          firebase_db_url: firebaseUrl,
           sandbox_mode: sandboxMode
         })
       });
       const data = await res.json();
-      alert('✅ API Settings Saved Successfully!');
+      alert('✅ API & Firebase Settings Saved Successfully!');
       apiKeyModal.classList.remove('open');
     } catch (err) {
       alert('Error saving keys: ' + err.message);
