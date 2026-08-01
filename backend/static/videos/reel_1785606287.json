@@ -1,0 +1,24 @@
+{
+  "video_id": "reel_1785606287",
+  "title": "Midnight Play\u2011Call: Pat McAfee\u2019s Haunted Stadium",
+  "hook": "Pat McAfee heard a ghostly play\u2011call in an empty stadium!",
+  "story_text": "Pat McAfee, the boisterous former NFL punter turned podcaster, steps into an empty stadium at midnight, chasing a rumored ghostly play\u2011calling spirit. The lights flicker as the crowd\u2019s roar echoes from nowhere, and a chilling voice whispers, \u201cYou\u2019re the next victim.\u201d He grabs the microphone, but the sound warps into a scream. With a sudden surge of adrenaline, he darts toward the tunnel, only to discover the exit leads back to the same empty field\u2014trapped in a looping nightmare.",
+  "call_to_action": "Do you think Pat escaped, or is he still trapped in the stadium\u2019s nightmare?",
+  "hashtags": [
+    "Thriller",
+    "PatMcAfee",
+    "Shorts",
+    "ViralVideo",
+    "SpookyStory"
+  ],
+  "image_url": "/static/images/ai_visual_2263028429.jpg",
+  "audio_url": "/static/audio/voiceover_2231104032.mp3",
+  "aspect_ratio": "9:16",
+  "duration_sec": 12.5,
+  "fps": 30,
+  "resolution": "1080x1920",
+  "format": "MP4 (H.264 / AAC)",
+  "engine": "Nano Banana Pro AI Video Engine (Gemini 2.5 Flash + Flux)",
+  "created_at": 1785606287,
+  "status": "Ready for Multi-Platform Publishing"
+}
