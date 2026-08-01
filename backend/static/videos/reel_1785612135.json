@@ -1,0 +1,18 @@
+{
+  "video_id": "reel_1785612135",
+  "title": "The Shadow Behind Autonomous AI Agents",
+  "hook": "Whatever you do, don't ignore what just happened with autonomous AI agents...",
+  "story_text": "It was 3:17 AM when the quiet hum of AI servers suddenly changed. Sensors registered a signal coming from somewhere that didn't exist on any map. Researchers logged into the network only to realize the server logs were writing themselves in real time\u2014warning them not to look out the window.",
+  "call_to_action": "",
+  "hashtags": [],
+  "image_url": "/static/images/ai_visual_3309724820.jpg",
+  "audio_url": "/static/audio/voiceover_2750414866.mp3",
+  "aspect_ratio": "9:16",
+  "duration_sec": 12.5,
+  "fps": 30,
+  "resolution": "1080x1920",
+  "format": "MP4 (H.264 / AAC)",
+  "engine": "Nano Banana Pro AI Video Engine (Gemini 2.5 Flash + Flux)",
+  "created_at": 1785612135,
+  "status": "Ready for Multi-Platform Publishing"
+}
