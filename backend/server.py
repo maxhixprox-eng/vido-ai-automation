@@ -76,6 +76,8 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
                 "openrouter_key": API_KEYS_CACHE.get("openrouter_key", ""),
                 "gemini_key": API_KEYS_CACHE.get("gemini_key", ""),
                 "elevenlabs_key": API_KEYS_CACHE.get("elevenlabs_key", ""),
+                "firebase_api_key": API_KEYS_CACHE.get("firebase_api_key", os.environ.get("FIREBASE_API_KEY", "")),
+                "firebase_db_url": os.environ.get("FIREBASE_DB_URL", "https://nexus-viral-automation-default-rtdb.firebaseio.com"),
                 "has_openrouter": bool(API_KEYS_CACHE.get("openrouter_key")),
                 "has_gemini": bool(API_KEYS_CACHE.get("gemini_key")),
                 "has_elevenlabs": bool(API_KEYS_CACHE.get("elevenlabs_key")),
@@ -84,6 +86,16 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
                 "has_meta": bool(API_KEYS_CACHE.get("meta_token")),
                 "has_youtube": bool(API_KEYS_CACHE.get("youtube_token")),
                 "sandbox_mode": API_KEYS_CACHE.get("sandbox_mode", "true") == "true"
+            })
+            return
+
+        elif path == "/api/firebase-config":
+            self.send_json_response({
+                "apiKey": os.environ.get("FIREBASE_API_KEY", "AIzaSyB_Nexus_Firebase_Key_Sample"),
+                "authDomain": os.environ.get("FIREBASE_AUTH_DOMAIN", "nexus-viral-automation.firebaseapp.com"),
+                "projectId": os.environ.get("FIREBASE_PROJECT_ID", "nexus-viral-automation"),
+                "storageBucket": os.environ.get("FIREBASE_STORAGE_BUCKET", "nexus-viral-automation.appspot.com"),
+                "databaseURL": os.environ.get("FIREBASE_DB_URL", "https://nexus-viral-automation-default-rtdb.firebaseio.com")
             })
             return
 
