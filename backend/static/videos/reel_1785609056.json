@@ -1,0 +1,24 @@
+{
+  "video_id": "reel_1785609056",
+  "title": "Mercury's Edge: A Liberty Thriller",
+  "hook": "What if the metal that fuels your phone could end freedom forever?",
+  "story_text": "In a near\u2011future city, the government replaces cash with a liquid metal called mercury, promising unlimited liberty through a single swipe. But the fluid seeps into every device, recording thoughts and movements. When activist Maya discovers the hidden code, she must outwit drones and a shadowy corporation before the mercury locks her mind, turning liberty into a silent, obedient whisper.",
+  "call_to_action": "Will you dare to unplug before the mercury takes over?",
+  "hashtags": [
+    "#ThrillerStory",
+    "#TechDystopia",
+    "#FreedomFight",
+    "#MercuryMystery",
+    "#ViralShorts"
+  ],
+  "image_url": "/static/images/ai_visual_3839245677.jpg",
+  "audio_url": "/static/audio/voiceover_3935726098.mp3",
+  "aspect_ratio": "9:16",
+  "duration_sec": 12.5,
+  "fps": 30,
+  "resolution": "1080x1920",
+  "format": "MP4 (H.264 / AAC)",
+  "engine": "Nano Banana Pro AI Video Engine (Gemini 2.5 Flash + Flux)",
+  "created_at": 1785609056,
+  "status": "Ready for Multi-Platform Publishing"
+}
