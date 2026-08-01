@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Social Media Automation Platform</title>
+  <meta name="description" content="AI-Powered Social Media Content Generation, Voiceover Audio, Video Reels, Multi-Platform Publishing, and Adaptive Analytics.">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+</head>
+<body>
+  <!-- Pre-Dashboard Modern Cyberpunk Login Gateway Screen Overlay -->
+  <div id="login-screen-overlay" style="position: fixed; inset: 0; background: rgba(11, 14, 17, 0.96); backdrop-filter: blur(16px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: #1a2027; border: 1px solid var(--accent-orange); border-radius: 16px; padding: 36px 32px; width: 100%; max-width: 440px; box-shadow: 0 16px 48px rgba(0,0,0,0.9); text-align: center;">
+      <div style="font-size: 42px; color: var(--accent-orange); font-weight: 900; margin-bottom: 4px;">VIDO</div>
+      <h2 style="color: #fff; margin: 0 0 8px 0; font-size: 1.3rem;">Creator Dashboard Login</h2>
+      <p style="color: #8a96a3; font-size: 0.88rem; margin-bottom: 24px;">Sign in to access your AI video automation studio & target channels.</p>
+
+      <!-- Quick Preset Profile Selector -->
+      <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; text-align: left;">
+        <label style="font-size: 0.8rem; color: #8a96a3; font-weight: 700;">SELECT SAVED CREATOR ACCOUNT:</label>
+        
+        <div class="preset-account-btn" id="preset-acc-1" style="display: flex; align-items: center; gap: 12px; background: #12161a; border: 1px solid var(--accent-orange); border-radius: 8px; padding: 10px 14px; cursor: pointer; transition: all 0.2s;">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--accent-orange); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800;">M</div>
+          <div style="flex: 1;">
+            <div style="color: #fff; font-weight: 700; font-size: 0.88rem;">Creator Pro</div>
+            <div style="color: #8a96a3; font-size: 0.78rem;">max.hix.prox@gmail.com</div>
+          </div>
+          <span style="color: #28a745; font-size: 0.75rem; font-weight: 700;">Active</span>
+        </div>
+
+        <div class="preset-account-btn" id="preset-acc-2" style="display: flex; align-items: center; gap: 12px; background: #12161a; border: 1px solid #3a444c; border-radius: 8px; padding: 10px 14px; cursor: pointer; transition: all 0.2s;">
+          <div style="width: 34px; height: 34px; border-radius: 50%; background: #FE2C55; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800;">T</div>
+          <div style="flex: 1;">
+            <div style="color: #fff; font-weight: 700; font-size: 0.88rem;">TikTok @story_1955</div>
+            <div style="color: #8a96a3; font-size: 0.78rem;">tiktok.story1955@gmail.com</div>
+          </div>
+          <span style="color: #8a96a3; font-size: 0.75rem;">Channel</span>
+        </div>
+      </div>
+
+      <!-- Manual Input Form -->
+      <form id="login-form" style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+        <div>
+          <label style="font-size: 0.8rem; color: #8a96a3; font-weight: 700; display: block; margin-bottom: 4px;">CREATOR EMAIL ADDRESS</label>
+          <input type="email" id="login-email-input" value="max.hix.prox@gmail.com" required style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #3a444c; background: #12161a; color: #fff; box-sizing: border-box; font-size: 0.9rem;">
+        </div>
+
+        <div>
+          <label style="font-size: 0.8rem; color: #8a96a3; font-weight: 700; display: block; margin-bottom: 4px;">PASSWORD</label>
+          <input type="password" id="login-password-input" value="••••••••" required style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid #3a444c; background: #12161a; color: #fff; box-sizing: border-box; font-size: 0.9rem;">
+        </div>
+
+        <button type="submit" class="btn-primary" style="margin-top: 10px; padding: 12px; font-size: 1rem; width: 100%; background: var(--accent-orange);">
+          🚀 Sign In & Enter Dashboard
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div id="app">
+    <!-- Top Header Navigation -->
+    <header class="header-nav">
+      <div class="brand-logo">
+        <div class="logo-icon">⚡</div>
+        <span>VIDO AI <small style="font-size: 0.65rem; color: var(--accent-orange); margin-left: 6px;">AUTOMATION</small></span>
+      </div>
+      
+      <div class="header-actions">
+        <!-- Logged In User Profile Badge -->
+        <div id="user-profile-badge" style="display: flex; align-items: center; gap: 8px; background: #12161a; border: 1px solid #3a444c; border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: #fff;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #28a745;"></span>
+          <span id="header-user-email">max.hix.prox@gmail.com</span>
+          <button id="btn-logout" style="background: none; border: none; color: var(--accent-orange); cursor: pointer; font-size: 0.75rem; font-weight: bold; margin-left: 4px;">Logout</button>
+        </div>
+
+        <button id="btn-api-keys" class="btn-header">
+          <span>🔑</span> API Settings
+        </button>
+        <button id="btn-analytics-toggle" class="btn-header">
+          <span>📊</span> Adaptive Analytics
+        </button>
+        <button id="btn-run-all" class="btn-primary">
+          <span>▶</span> Auto Pipeline
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Workspace -->
+    <div class="dashboard-main">
+      <!-- Left Vertical Stepper Navigation Sidebar -->
+      <aside class="stepper-sidebar">
+        <div class="stepper-title">Workflow Steps</div>
+        
+        <button class="step-item active" data-step="1">
+          <span class="step-num">01</span>
+          <span class="step-label">Trend Scraping</span>
+        </button>
+        
+        <button class="step-item" data-step="2">
+          <span class="step-num">02</span>
+          <span class="step-label">AI Story Studio</span>
+        </button>
+        
+        <button class="step-item" data-step="3">
+          <span class="step-num">03</span>
+          <span class="step-label">Voiceover & Audio</span>
+        </button>
+        
+        <button class="step-item" data-step="4">
+          <span class="step-num">04</span>
+          <span class="step-label">Video Studio</span>
+        </button>
+        
+        <button class="step-item" data-step="5">
+          <span class="step-num">05</span>
+          <span class="step-label">Publishing & Analytics</span>
+        </button>
+      </aside>
+
+      <!-- Central Workspace -->
+      <main class="workspace-content" id="workspace-container">
+        <!-- Target Social Media Platforms Selection Header -->
+        <section class="card" id="platform-controls-card">
+          <div class="card-title">
+            <span>Target Social Media Platforms</span>
+            <small style="color: var(--text-muted); font-size: 0.85rem;">Active Target Channels</small>
+          </div>
+          <div class="platform-grid">
+            <label class="platform-checkbox selected" data-platform="TikTok">
+              <input type="checkbox" checked value="TikTok">
+              <span class="platform-name">🎵 TikTok</span>
+            </label>
+
+            <label class="platform-checkbox selected" data-platform="X/Twitter">
+              <input type="checkbox" checked value="X/Twitter">
+              <span class="platform-name">𝕏 / Twitter</span>
+            </label>
+
+            <label class="platform-checkbox selected" data-platform="Instagram">
+              <input type="checkbox" checked value="Instagram">
+              <span class="platform-name">📷 Instagram Reels</span>
+            </label>
+
+            <label class="platform-checkbox selected" data-platform="Facebook">
+              <input type="checkbox" checked value="Facebook">
+              <span class="platform-name">📘 Facebook Video</span>
+            </label>
+          </div>
+        </section>
+
+        <!-- Dynamic Step View Container -->
+        <div id="step-view-content">
+          <!-- Step 1: Trend Scraping View -->
+          <div class="step-pane" id="pane-step-1">
+            <div class="section-header">
+              <h1 class="section-title">01. Trend Scraping & Discovery</h1>
+              <p class="section-subtitle">Real-time viral topic extraction from Google Trends and Reddit algorithms.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">
+                <span>Viral Topic Feeds</span>
+                <button id="btn-refresh-trends" class="btn-header">🔄 Refresh Feeds</button>
+              </div>
+
+              <div id="trends-container" class="trends-grid">
+                <div style="color: var(--text-muted);">Loading trending feeds...</div>
+              </div>
+
+              <div class="form-group" style="margin-top: 16px;">
+                <label class="form-label">Selected Topic / Keyword</label>
+                <input type="text" id="input-selected-topic" class="form-control" value="Autonomous AI Agents Breakthroughs" placeholder="Select a topic above or type custom topic...">
+              </div>
+
+              <div style="text-align: right; margin-top: 12px;">
+                <button id="btn-goto-step-2" class="btn-primary">Continue to AI Story Studio ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Story Studio View -->
+          <div class="step-pane" id="pane-step-2" style="display: none;">
+            <div class="section-header">
+              <h1 class="section-title">02. Gemini AI Story Studio</h1>
+              <p class="section-subtitle">AI prompt engineering with high-conversion story genres (Thriller, Comedy, Mystery, Tech).</p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">
+                <span>Story Configuration</span>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                  <label class="form-label">Content Genre</label>
+                  <select id="select-genre" class="form-select">
+                    <option value="Thriller" selected>🎬 Thriller & Suspense</option>
+                    <option value="Comedy">😂 Comedy & Relatable</option>
+                    <option value="Mystery">🔍 Mystery & Secrets</option>
+                    <option value="Tech">🚀 Tech & Future Science</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">AI Prompt Mode</label>
+                  <select id="select-ai-engine" class="form-select">
+                    <option value="openrouter" selected>OpenRouter API (Gemini Flash)</option>
+                    <option value="gemini">Google Gemini 1.5 Flash API</option>
+                    <option value="auto">Adaptive Prompt Engine (Auto-Tuned)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button id="btn-generate-story" class="btn-primary" style="margin-top: 12px;">✨ Generate Script & Prompt</button>
+            </div>
+
+            <div class="card" id="card-story-output">
+              <div class="card-title">
+                <span>Generated Story Output</span>
+                <span id="badge-story-engine" class="trend-source-badge">Gemini Engine</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Title</label>
+                <input type="text" id="output-story-title" class="form-control" value="The Shadow Behind Autonomous AI Agents">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Hook (0-3 Seconds)</label>
+                <input type="text" id="output-story-hook" class="form-control" value="Whatever you do, don't ignore what just happened with autonomous AI agents...">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Story Script</label>
+                <textarea id="output-story-script" class="form-textarea">It was 3:17 AM when the quiet hum of AI servers suddenly changed. Sensors registered a signal coming from somewhere that didn't exist on any map. Researchers logged into the network only to realize the server logs were writing themselves in real time—warning them not to look out the window.</textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Cinematic Image Prompt</label>
+                <input type="text" id="output-visual-prompt" class="form-control" value="Cinematic dark thriller scene, atmospheric foggy night, glowing neon surveillance interface reflecting off rain-slicked glass">
+              </div>
+
+              <div style="text-align: right; margin-top: 12px;">
+                <button id="btn-goto-step-3" class="btn-primary">Generate Voiceover Audio ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Voiceover & Audio Studio -->
+          <div class="step-pane" id="pane-step-3" style="display: none;">
+            <div class="section-header">
+              <h1 class="section-title">03. Voiceover & Audio Studio</h1>
+              <p class="section-subtitle">Text-to-speech audio synthesis engine (ElevenLabs / TTS) for high-impact voiceovers.</p>
+            </div>
+
+            <div class="card">
+              <div class="card-title">
+                <span>Select Voice Actor & Test Sample</span>
+                <small style="color: var(--text-muted); font-size: 0.85rem;">Click '🎧 Preview Sample' to test any voice before generating full narration</small>
+              </div>
+
+              <!-- Interactive Multi-Voice Cards Grid (Legendary & Thriller Voices) -->
+              <div class="voices-grid" id="voices-cards-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                <!-- 1. Morgan Freeman -->
+                <div class="voice-card active" data-voice="Morgan Freeman (Deep & Wise)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🎙️ Morgan Freeman</span>
+                    <span class="trend-source-badge">Deep & Wise</span>
+                  </div>
+                  <p class="voice-desc">نبرة دافئة، عميقة، وحكيمة تعطي القصة الهيبة والوقار - المعيار الذهبي في الرواية.</p>
+                  <button class="btn-voice-preview" data-voice="Morgan Freeman (Deep & Wise)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 2. David Attenborough -->
+                <div class="voice-card" data-voice="David Attenborough (Nature & Discovery)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🌍 David Attenborough</span>
+                    <span class="trend-source-badge">Documentary</span>
+                  </div>
+                  <p class="voice-desc">الراوي الشهير لوثائقيات التشويق والرغبة في الاكتشاف والغموض العلمي.</p>
+                  <button class="btn-voice-preview" data-voice="David Attenborough (Nature & Discovery)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 3. James Earl Jones -->
+                <div class="voice-card" data-voice="James Earl Jones (Epic & Ultra-Deep)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">👑 James Earl Jones</span>
+                    <span class="trend-source-badge">Epic & Ultra-Deep</span>
+                  </div>
+                  <p class="voice-desc">صوت أسطوري فخم وعميق جداً يناسب قصص الرعب، الملاحم، والغموض.</p>
+                  <button class="btn-voice-preview" data-voice="James Earl Jones (Epic & Ultra-Deep)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 4. Neil Gaiman -->
+                <div class="voice-card" data-voice="Neil Gaiman (Dark Storyteller)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">📖 Neil Gaiman</span>
+                    <span class="trend-source-badge">Dark Storyteller</span>
+                  </div>
+                  <p class="voice-desc">أسلوب روائي ساحر وهادئ بقراءة القصص والنصوص المظلمة والتشويق النفسي.</p>
+                  <button class="btn-voice-preview" data-voice="Neil Gaiman (Dark Storyteller)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 5. Benedict Cumberbatch -->
+                <div class="voice-card" data-voice="Benedict Cumberbatch (British Crime & Mystery)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🕵️ Benedict Cumberbatch</span>
+                    <span class="trend-source-badge">British Detective</span>
+                  </div>
+                  <p class="voice-desc">نبرة بريطانية سينمائية حادة وعميقة تناسب التحقيقات وجرائم الغموض.</p>
+                  <button class="btn-voice-preview" data-voice="Benedict Cumberbatch (British Crime & Mystery)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 6. Adam -->
+                <div class="voice-card" data-voice="Adam (Deep & Narrative)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🎙️ Adam</span>
+                    <span class="trend-source-badge">Deep & Narrative</span>
+                  </div>
+                  <p class="voice-desc">عميق، دافئ، ورزين - القراءة العامة للقصص والأجواء الغامضة.</p>
+                  <button class="btn-voice-preview" data-voice="Adam (Deep & Narrative)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 7. Marcus -->
+                <div class="voice-card" data-voice="Marcus (Cinematic & Husky)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🎬 Marcus</span>
+                    <span class="trend-source-badge">Cinematic & Husky</span>
+                  </div>
+                  <p class="voice-desc">سينمائي، قوي، ذو بحّة خفيفة - قصص التشويق، الإثارة، والأحداث الحماسية.</p>
+                  <button class="btn-voice-preview" data-voice="Marcus (Cinematic & Husky)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 8. Antony -->
+                <div class="voice-card" data-voice="Antony (British & Mysterious)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🕵️ Antony</span>
+                    <span class="trend-source-badge">British & Mystery</span>
+                  </div>
+                  <p class="voice-desc">بريطاني، هادئ، ومليء بالغموض - القصص التاريخية والتحقيقات.</p>
+                  <button class="btn-voice-preview" data-voice="Antony (British & Mysterious)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 9. Callum -->
+                <div class="voice-card" data-voice="Callum (Dark & Intense)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🌒 Callum</span>
+                    <span class="trend-source-badge">Dark & Intense</span>
+                  </div>
+                  <p class="voice-desc">نبرة مظلمة، عميقة جداً - قصص الرعب، الأحداث المخيفة، والغموض النفسي.</p>
+                  <button class="btn-voice-preview" data-voice="Callum (Dark & Intense)">🎧 Preview Sample</button>
+                </div>
+
+                <!-- 10. Rachel -->
+                <div class="voice-card" data-voice="Rachel (Dramatic Female)">
+                  <div class="voice-card-header">
+                    <span class="voice-name">🎭 Rachel</span>
+                    <span class="trend-source-badge">Dramatic Female</span>
+                  </div>
+                  <p class="voice-desc">نبرة أنثوية درامية ومشوقة - القصص التي تحتاج راوياً أنثوياً سينمائياً.</p>
+                  <button class="btn-voice-preview" data-voice="Rachel (Dramatic Female)">🎧 Preview Sample</button>
+                </div>
+              </div>
+
+              <!-- Active Voice Sample Preview Banner -->
+              <div id="sample-preview-banner" style="background: rgba(30,37,43,0.9); border: 1px solid var(--border-color); border-left: 4px solid var(--accent-orange); border-radius: 8px; padding: 12px 16px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-weight: 700; font-size: 0.9rem; color: var(--text-white);" id="sample-preview-title">🎧 Voice Sample Test Player</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted);" id="sample-preview-phrase">Select any voice above to listen to a short test sample audio clip</div>
+                </div>
+                <audio id="sample-audio-player" controls style="height: 36px; max-width: 250px;"></audio>
+              </div>
+
+              <!-- Voice Control Options -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-group">
+                  <label class="form-label">Selected Voice Actor</label>
+                  <select id="select-voice-style" class="form-select">
+                    <option value="Morgan Freeman (Deep & Wise)" selected>🎙️ Morgan Freeman (Deep & Wise)</option>
+                    <option value="David Attenborough (Nature & Discovery)">🌍 David Attenborough (Nature & Discovery)</option>
+                    <option value="James Earl Jones (Epic & Ultra-Deep)">👑 James Earl Jones (Epic & Ultra-Deep)</option>
+                    <option value="Neil Gaiman (Dark Storyteller)">📖 Neil Gaiman (Dark Storyteller)</option>
+                    <option value="Benedict Cumberbatch (British Crime & Mystery)">🕵️ Benedict Cumberbatch (British Crime & Mystery)</option>
+                    <option value="Adam (Deep & Narrative)">🎙️ Adam (Deep & Narrative)</option>
+                    <option value="Marcus (Cinematic & Husky)">🎬 Marcus (Cinematic & Husky)</option>
+                    <option value="Antony (British & Mysterious)">🕵️ Antony (British & Mysterious)</option>
+                    <option value="Callum (Dark & Intense)">🌒 Callum (Dark & Intense)</option>
+                    <option value="Rachel (Dramatic Female)">🎭 Rachel (Dramatic Female)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Speech Speed</label>
+                  <select id="select-speech-speed" class="form-select">
+                    <option value="1.0">1.0x Normal</option>
+                    <option value="1.15">1.15x Fast-Paced Reel</option>
+                    <option value="1.3">1.3x High Energy</option>
+                  </select>
+                </div>
+              </div>
+
+              <button id="btn-generate-audio" class="btn-primary" style="margin-top: 12px;">🔊 Synthesize Voiceover Audio</button>
+            </div>
+
+            <div class="card" id="card-audio-output">
+              <div class="card-title">Voiceover Audio Track Preview</div>
+              
+              <div class="audio-player-container">
+                <audio id="audio-player" controls src="/static/audio/default.wav"></audio>
+              </div>
+
+              <div style="text-align: right; margin-top: 12px;">
+                <button id="btn-goto-step-4" class="btn-primary">Synthesize Video Reel ➔</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Video Studio -->
+          <div class="step-pane" id="pane-step-4" style="display: none;">
+            <div class="section-header">
+              <h1 class="section-title">04. Visual & Video Studio</h1>
+              <p class="section-subtitle">Cinematic image generation and MP4 video reel synthesis engine.</p>
+            </div>
+
+            <!-- Sequential 4-Substep Pipeline Stepper Navigation -->
+            <div class="card" style="margin-bottom: 20px;">
+              <div class="card-title">🎬 4-Stage Sequential Video Creation Pipeline (مراحل إنشاء الفيديو المقسمة)</div>
+              
+              <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; overflow-x: auto;">
+                <button class="btn-primary pipeline-substep-tab active" data-substep="1" id="tab-substep-1" style="padding: 8px 14px; font-size: 0.85rem;">🎨 1. إنشاء الصور</button>
+                <button class="btn-primary pipeline-substep-tab" data-substep="2" id="tab-substep-2" style="padding: 8px 14px; font-size: 0.85rem; background: var(--bg-card);" disabled>🎞️ 2. دمج المشاهد</button>
+                <button class="btn-primary pipeline-substep-tab" data-substep="3" id="tab-substep-3" style="padding: 8px 14px; font-size: 0.85rem; background: var(--bg-card);" disabled>🔤 3. إضافة الكلمات والنصوص</button>
+                <button class="btn-primary pipeline-substep-tab" data-substep="4" id="tab-substep-4" style="padding: 8px 14px; font-size: 0.85rem; background: var(--bg-card);" disabled>🎙️ 4. إضافة الصوت والتعليق الصوتي</button>
+              </div>
+
+              <!-- Stage 1 Content: Generate Images -->
+              <div class="substep-pane" id="pane-substep-1">
+                <h4 style="color: var(--accent-orange); margin-top: 0;">مرحلة 1: توليد تسلسل الصور الذكية لقصتك (Nano Banana Pro AI)</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">إنشاء مشاهد بصريّة متتالية تتماشى مع أحداث السيناريو المولد.</p>
+                <div style="display: flex; gap: 14px; margin-top: 14px; align-items: center; flex-wrap: wrap;">
+                  <button id="btn-substep-1-gen" class="btn-primary" style="background: var(--accent-orange); padding: 12px 24px;">🎨 توليد مشاهد الصور الآن</button>
+                  <button id="btn-substep-1-next" class="btn-primary" style="background: #28a745; padding: 12px 24px; display: none;">التالي ➔ 🎞️ دمج المشاهد والتحريك</button>
+                </div>
+                <div id="substep-1-gallery" style="display: flex; gap: 12px; margin-top: 16px; overflow-x: auto;"></div>
+              </div>
+
+              <!-- Stage 2 Content: Merge Scenes & Motion -->
+              <div class="substep-pane" id="pane-substep-2" style="display: none;">
+                <h4 style="color: var(--accent-orange); margin-top: 0;">مرحلة 2: دمج الصور وتطبيقات التحريك الـ Ken Burns</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">دمج المشاهد في إطار الفيديو 9:16 مع إضافة تأثير الحركة التفاعلية والـ Particle Aura.</p>
+                <div style="display: flex; gap: 14px; margin-top: 14px; align-items: center; flex-wrap: wrap;">
+                  <button id="btn-substep-2-merge" class="btn-primary" style="background: var(--accent-orange); padding: 12px 24px;">🎞️ دمج المشاهد على الكانفاس 9:16</button>
+                  <button id="btn-substep-2-next" class="btn-primary" style="background: #28a745; padding: 12px 24px; display: none;">التالي ➔ 🔤 إضافة الكلمات والنصوص</button>
+                </div>
+              </div>
+
+              <!-- Stage 3 Content: Add Captions & Subtitles -->
+              <div class="substep-pane" id="pane-substep-3" style="display: none;">
+                <h4 style="color: var(--accent-orange); margin-top: 0;">مرحلة 3: إضافة الكلمات والنصوص على الشاشة (Auto-Captions)</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">إظهار الكابشنز الديناميكية الصفراء بخط عريض يتزامن مع أحداث الفيديو.</p>
+                <div style="display: flex; gap: 14px; margin-top: 14px; align-items: center; flex-wrap: wrap;">
+                  <button id="btn-substep-3-captions" class="btn-primary" style="background: var(--accent-orange); padding: 12px 24px;">🔤 دمج النصوص والترجمة الصفراء</button>
+                  <button id="btn-substep-3-next" class="btn-primary" style="background: #28a745; padding: 12px 24px; display: none;">التالي ➔ 🎙️ إضافة الصوت والتعليق الصوتي</button>
+                </div>
+              </div>
+
+              <!-- Stage 4 Content: Add Voiceover Audio -->
+              <div class="substep-pane" id="pane-substep-4" style="display: none;">
+                <h4 style="color: var(--accent-orange); margin-top: 0;">مرحلة 4: دمج التعليق الصوتي والمؤثرات (ElevenLabs / Google Speech)</h4>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">إضافة مقطع التعليق الصوتي الواقعي ومزامنته مع حركة الصور والكلمات.</p>
+                <div style="display: flex; gap: 14px; margin-top: 14px; align-items: center; flex-wrap: wrap;">
+                  <button id="btn-substep-4-audio" class="btn-primary" style="background: var(--accent-orange); padding: 12px 24px;">🎙️ توليد ودمج الصوت الآن</button>
+                  <button id="btn-substep-4-finish" class="btn-primary" style="background: #28a745; padding: 12px 24px; display: none;">🎉 إنهاء واكتمال الفيديو جاهز للتشغيل والنشر!</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Compiled Video Reel Preview</div>
+              <div class="video-preview-wrapper" style="display: flex; gap: 24px; flex-wrap: wrap;">
+                
+                <!-- 9:16 Vertical Video Reel Frame Container -->
+                <div class="video-frame" style="width: 320px; height: 568px; position: relative; border-radius: 12px; overflow: hidden; background: #0b0e11; box-shadow: 0 12px 36px rgba(0,0,0,0.8); border: 2px solid var(--accent-orange);">
+                  <!-- Dynamic HTML5 Motion Reel Canvas (9:16 Ratio 540x960) -->
+                  <canvas id="reel-video-canvas" width="540" height="960" style="width: 100%; height: 100%; object-fit: cover; display: block;"></canvas>
+
+                  <!-- Top Badge Overlay -->
+                  <div style="position: absolute; top: 14px; left: 14px; background: rgba(0,0,0,0.65); backdrop-filter: blur(4px); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--accent-orange); font-size: 0.75rem; font-weight: 700; color: #fff; z-index: 10;">
+                    🎬 AI REEL 9:16 (1080×1920)
+                  </div>
+
+                  <!-- Subtitle Captions & Playback Control Overlay -->
+                  <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.95) 40%); padding: 16px; display: flex; flex-direction: column; gap: 12px; z-index: 10;">
+                    
+                    <!-- Dynamic Subtitle Captions Box -->
+                    <div id="video-overlay-captions" style="background: rgba(18,22,26,0.9); backdrop-filter: blur(6px); border: 1px solid var(--accent-orange); padding: 12px 14px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; color: #fff; text-align: center; line-height: 1.4; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+                      <div id="video-caption-title" style="color: var(--accent-orange); font-size: 0.9rem; font-weight: 800; margin-bottom: 4px;">✨ THRILLER REEL</div>
+                      <div id="video-caption-text" style="color: #fff;">Click "🎨 Generate Visual Artwork & Render Reel" to synthesize your video reel</div>
+                    </div>
+
+                    <!-- Video Controls Row -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+                      <button id="btn-play-reel-video" class="btn-primary" style="padding: 8px 16px; font-size: 0.85rem; flex: 1;">▶️ Play Video Reel</button>
+                      <button id="btn-download-reel-video" class="btn-primary" style="background: #28a745; padding: 8px 16px; font-size: 0.85rem; flex: 1;">⬇️ Download Video (.mp4)</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Reel Specifications & Details Column -->
+                <div style="flex: 1; min-width: 260px; display: flex; flex-direction: column; gap: 16px;">
+                  <div class="stat-card">
+                    <div class="stat-value" id="video-res-display">1080x1920</div>
+                    <div class="stat-label">Aspect Ratio (9:16 Vertical Reel)</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" id="video-fps-display">30 FPS</div>
+                    <div class="stat-label">Video Frame Rate</div>
+                  </div>
+                  <div class="stat-card">
+                    <div class="stat-value" id="video-status-display" style="color: #28a745;">Ready for Render</div>
+                    <div class="stat-label">Synthesis Status</div>
+                  </div>
+
+                  <button id="btn-goto-step-5" class="btn-primary" style="margin-top: 16px; width: 100%;">🚀 Multi-Platform Publishing ➔</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 5: Publishing & Analytics View -->
+          <div class="step-pane" id="pane-step-5" style="display: none;">
+            <div class="section-header">
+              <h1 class="section-title">05. Multi-Platform Publishing & Adaptive Learning</h1>
+              <p class="section-subtitle">Publish across target channels & monitor real-time adaptive feedback performance metrics.</p>
+            </div>
+
+            <!-- Instant Simple Accounts Connection Cards -->
+            <div class="card">
+              <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>🔗 ربط حسابات التواصل الاجتماعي (طريقة سريعة ومباشرة)</span>
+                <button id="btn-link-all-instant" class="btn-primary" style="background: #28a745; font-size: 0.85rem; padding: 8px 16px;">
+                  ⚡ ربط جميع الحسابات بنقرة واحدة
+                </button>
+              </div>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">أدخل اسم حسابك أو إيميلك واضغط ربط الحساب للنشر المباشر فوراً:</p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-bottom: 20px;">
+                <!-- TikTok -->
+                <div class="stat-card" style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border-color);">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: 800; color: #fff;">🎵 TikTok</span>
+                    <span class="trend-source-badge" id="oauth-badge-tiktok" style="background: rgba(40,167,69,0.25); color: #28a745;">مرتبط ✅</span>
+                  </div>
+                  <input type="text" id="handle-tiktok" value="@story_1955" placeholder="أدخل يوزر التيكتوك..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a444c; background: #12161a; color: #fff; font-size: 0.8rem; box-sizing: border-box;">
+                  <button class="btn-primary btn-instant-link" data-platform="tiktok" style="padding: 6px 12px; font-size: 0.8rem;">⚡ ربط حساب تيكتوك</button>
+                </div>
+
+                <!-- YouTube Shorts -->
+                <div class="stat-card" style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border-color);">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: 800; color: #fff;">▶️ YouTube Shorts</span>
+                    <span class="trend-source-badge" id="oauth-badge-youtube" style="background: rgba(40,167,69,0.25); color: #28a745;">مرتبط ✅</span>
+                  </div>
+                  <input type="text" id="handle-youtube" value="max.hix.prox@gmail.com" placeholder="أدخل إيميل قناتك..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a444c; background: #12161a; color: #fff; font-size: 0.8rem; box-sizing: border-box;">
+                  <button class="btn-primary btn-instant-link" data-platform="youtube" style="padding: 6px 12px; font-size: 0.8rem;">⚡ ربط يوتيوب شورتس</button>
+                </div>
+
+                <!-- X / Twitter -->
+                <div class="stat-card" style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border-color);">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: 800; color: #fff;">🐦 X (Twitter)</span>
+                    <span class="trend-source-badge" id="oauth-badge-twitter" style="background: rgba(40,167,69,0.25); color: #28a745;">مرتبط ✅</span>
+                  </div>
+                  <input type="text" id="handle-twitter" value="@nexus_shorts_official" placeholder="أدخل اسم يوزر تويتر..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a444c; background: #12161a; color: #fff; font-size: 0.8rem; box-sizing: border-box;">
+                  <button class="btn-primary btn-instant-link" data-platform="twitter" style="padding: 6px 12px; font-size: 0.8rem;">⚡ ربط حساب منصة X</button>
+                </div>
+
+                <!-- Instagram Reels -->
+                <div class="stat-card" style="display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--border-color);">
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-weight: 800; color: #fff;">📸 Instagram</span>
+                    <span class="trend-source-badge" id="oauth-badge-instagram" style="background: rgba(40,167,69,0.25); color: #28a745;">مرتبط ✅</span>
+                  </div>
+                  <input type="text" id="handle-instagram" value="@nexus.reels.official" placeholder="أدخل يوزر إنستغرام..." style="width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a444c; background: #12161a; color: #fff; font-size: 0.8rem; box-sizing: border-box;">
+                  <button class="btn-primary btn-instant-link" data-platform="instagram" style="padding: 6px 12px; font-size: 0.8rem;">⚡ ربط حساب إنستغرام</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Autonomous Auto-Pilot Background Publisher Card -->
+            <div class="card" style="border: 1px solid var(--accent-orange); background: linear-gradient(135deg, rgba(255,87,34,0.08), rgba(30,37,43,0.9));">
+              <div class="card-title" style="display: flex; justify-content: space-between; align-items: center;">
+                <span>🤖 محرك النشر التلقائي الذاتي (Autonomous Auto-Pilot Publishing)</span>
+                <span class="trend-source-badge" id="badge-autopilot-status" style="background: rgba(40,167,69,0.3); color: #28a745; font-size: 0.85rem; padding: 4px 12px; font-weight: 800;">
+                  🟢 النشر الذاتي مفعل كلياً (Auto-Pilot Active)
+                </span>
+              </div>
+              <p style="color: #ccc; font-size: 0.92rem; margin-bottom: 14px;">
+                عند تفعيل هذا الخيار، ستعمل الأداة بمفردها كلياً في الخلفية لتوليد القصص، تصميم الصور، إنتاج التعليق الصوتي المروي، والنشر المباشر في جميع حساباتك المربوطة أعلاه بدون الحاجة لأي تدخل يدوي!
+              </p>
+
+              <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: center;">
+                <button id="btn-toggle-autopilot" class="btn-primary" style="background: #28a745; padding: 10px 20px; font-size: 0.95rem;">
+                  ⚡ الأداة تنشر بمفردها الآن (مُفعل تلقائياً)
+                </button>
+                <select id="select-autopilot-interval" style="padding: 10px 14px; border-radius: 8px; border: 1px solid #3a444c; background: #12161a; color: #fff; font-size: 0.88rem;">
+                  <option value="12" selected>⏰ توليد ونشر فيديو جديد كل 12 ساعة</option>
+                  <option value="24">⏰ توليد ونشر فيديو جديد يومياً (كل 24 ساعة)</option>
+                  <option value="6">⏰ توليد ونشر فيديو جديد كل 6 ساعات (محتوى مكثف)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Multi-Platform Auto Pipeline & Copywriting Control</div>
+              <p style="color: var(--text-muted); font-size: 0.92rem;">Review and customize platform-tailored captions (TikTok Hooks, X Tweets, YouTube Shorts Descriptions) before publishing.</p>
+              
+              <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                <button id="btn-review-and-edit" class="btn-primary" style="font-size: 1.05rem; padding: 14px 28px; background: var(--accent-orange);">
+                  ✏️ Edit & Review Platform Content Modal
+                </button>
+                <button id="btn-publish-now" class="btn-primary" style="font-size: 1.05rem; padding: 14px 28px; background: #28a745;">
+                  🚀 Approve & Post All Channels Now
+                </button>
+              </div>
+
+              <div id="publish-results-container" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;"></div>
+            </div>
+
+            <div class="card">
+              <div class="card-title">Adaptive Feedback Loop & Strategy Tuning</div>
+              <p style="color: var(--text-muted); font-size: 0.9rem;">
+                The platform measures 24h post-publication analytics (likes, comments, shares, saves) and dynamically adjusts AI prompt weights for higher future engagement.
+              </p>
+
+              <div class="analytics-grid" id="analytics-stats-grid">
+                <div class="stat-card">
+                  <div class="stat-value" id="stat-total-posts">24</div>
+                  <div class="stat-label">Total Posts Published</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value" id="stat-avg-likes">1,420</div>
+                  <div class="stat-label">Average Likes / Reel</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value" id="stat-top-genre" style="color: var(--status-success);">Thriller</div>
+                  <div class="stat-label">Top Performing Genre</div>
+                </div>
+              </div>
+
+              <h4 style="margin-top: 16px; font-weight: 700; color: var(--text-white);">Dynamic Strategy Weights</h4>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Genre</th>
+                    <th>Hook Style</th>
+                    <th>Call to Action</th>
+                    <th>Score Weight</th>
+                  </tr>
+                </thead>
+                <tbody id="prompt-tuning-table-body">
+                  <tr>
+                    <td style="font-weight: 700;">Thriller</td>
+                    <td>Shocking Question</td>
+                    <td>Comment your reaction</td>
+                    <td><span style="color: var(--status-success); font-weight: 800;">9.2 / 10</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Vertical Social Links Sidebar on Right Margin -->
+      <aside class="social-sidebar">
+        <div class="social-sidebar-text">
+          <span>Facebook</span>
+          <span>—</span>
+          <span>Twitter</span>
+          <span>—</span>
+          <span>Instagram</span>
+          <span>—</span>
+          <span>TikTok</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- API Keys Settings Modal Dialog -->
+  <div class="modal-backdrop" id="api-key-modal">
+    <div class="modal-content">
+      <div class="card-title">
+        <span>🔑 API Credentials & Keys</span>
+        <button id="modal-close-btn" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label">OpenRouter API Key (sk-or-v1-...)</label>
+        <input type="password" id="input-openrouter-key" class="form-control" placeholder="sk-or-v1-...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Google Gemini API Key</label>
+        <input type="password" id="input-gemini-key" class="form-control" placeholder="AIzaSy...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">ElevenLabs TTS Key (Optional)</label>
+        <input type="password" id="input-elevenlabs-key" class="form-control" placeholder="sk_...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">TikTok Content Posting API Token</label>
+        <input type="password" id="input-tiktok-key" class="form-control" placeholder="act.12345...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">X / Twitter API Developer Token</label>
+        <input type="password" id="input-twitter-key" class="form-control" placeholder="Bearer Token...">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Meta Graph API Token (Instagram/Facebook)</label>
+        <input type="password" id="input-meta-token" class="form-control" placeholder="EAAG...">
+      </div>
+
+      <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none;">
+        <input type="checkbox" id="chk-sandbox-mode" checked style="accent-color: var(--accent-orange); width: 18px; height: 18px;">
+        <span style="font-weight: 700; font-size: 0.9rem;">Enable Sandbox / Demo Mode (Publish safely without live keys)</span>
+      </label>
+
+      <button id="btn-save-api-keys" class="btn-primary">Save API Configuration</button>
+    </div>
+  </div>
+
+  <!-- Interactive Platform Copy Edit & Review Modal -->
+  <div class="modal-backdrop" id="modal-edit-review">
+    <div class="modal-content" style="max-width: 680px;">
+      <div class="card-title">
+        <span>✏️ Edit & Review Platform Copywriting</span>
+        <button id="edit-modal-close-btn" style="background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer;">&times;</button>
+      </div>
+
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">Customize captions, 3-second hooks, and keywords optimized per channel before publishing:</p>
+
+      <!-- Platform Selection Tabs -->
+      <div style="display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        <button class="btn-primary copy-tab active" data-tab="tiktok" style="padding: 6px 14px; font-size: 0.85rem;">🎵 TikTok & Reels</button>
+        <button class="btn-primary copy-tab" data-tab="twitter" style="padding: 6px 14px; font-size: 0.85rem; background: var(--bg-card);">🐦 X (Twitter)</button>
+        <button class="btn-primary copy-tab" data-tab="youtube" style="padding: 6px 14px; font-size: 0.85rem; background: var(--bg-card);">▶️ YouTube Shorts</button>
+      </div>
+
+      <!-- Tab Content: TikTok -->
+      <div class="tab-pane-copy" id="tab-copy-tiktok">
+        <div class="form-group">
+          <label class="form-label">3-Second Viral Hook</label>
+          <input type="text" id="edit-tiktok-hook" class="form-control" value="🚨 Whatever you do, don't ignore what just happened with the 1960s Clown Gang...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">TikTok Caption & Story Summary</label>
+          <textarea id="edit-tiktok-caption" class="form-control" rows="3">The Clown Gang - 1960s 💀\nUncovering the mysterious true story from 1960s America.</textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Trending Hashtags</label>
+          <input type="text" id="edit-tiktok-hashtags" class="form-control" value="#animation #educational #historytok #scary #horrorstory #1960s #facts #didyouknow">
+        </div>
+      </div>
+
+      <!-- Tab Content: Twitter -->
+      <div class="tab-pane-copy" id="tab-copy-twitter" style="display: none;">
+        <div class="form-group">
+          <label class="form-label">X / Twitter Tweet Copy</label>
+          <textarea id="edit-twitter-text" class="form-control" rows="4">💀 The Clown Gang - 1960s Mystery\n\nWhat would you do if you saw this in your neighborhood at 3:00 AM? 🧵👇</textarea>
+        </div>
+      </div>
+
+      <!-- Tab Content: YouTube -->
+      <div class="tab-pane-copy" id="tab-copy-youtube" style="display: none;">
+        <div class="form-group">
+          <label class="form-label">YouTube Shorts Title (< 60 Chars)</label>
+          <input type="text" id="edit-youtube-title" class="form-control" value="The 1960s Clown Gang Mystery 💀 #Shorts">
+        </div>
+        <div class="form-group">
+          <label class="form-label">YouTube Description & SEO Keywords</label>
+          <textarea id="edit-youtube-description" class="form-control" rows="3">An atmospheric 1960s vintage cartoon story. Subscribe for more 1960s animated horror mysteries!</textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 12px; margin-top: 20px; justify-content: flex-end;">
+        <button id="btn-save-edit-review" class="btn-primary" style="background: #28a745;">🚀 Save & Approve All Platform Posts</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
